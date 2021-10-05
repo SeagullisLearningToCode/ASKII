@@ -6,29 +6,30 @@ AAAAA  SSS  KK      I     I
 A   A     S K K     I     I
 A   A S   S K  K    I     I
 A   A  SSS  K   K IIIII IIIII
-            By: SeagullinSeagulls
+            By: SeagullisLearningToCode
 """
 
 from data.frw.GF import *
+
 
 def printAsASCII(string, **kwargs):
     # kwargs
     printASCIIList = kwargs.get("printASCIIList", False)  # Prints after ascii art is rendered with the width and height
     checkIfYValueReachedASCIIList = kwargs.get("check", False)  # Checks if the y value has reached the length of the Ascii list
     getLength = kwargs.get("getlength", False)  # Gets the length of ASCII
-    amountOfSpacing = kwargs.get("spacing", 2) # ; adds additional spacing when input contains " "
+    amountOfSpacing = kwargs.get("spacing", 2)  # ; adds additional spacing when input contains " "
     # int
-    x = 0 # ; X-Axis
-    y = 0 # ; Y-Axis
-    z = 0 # ; Z-Iterator
-    coordLimitsX = 5 # X-Axis iter limit
-    coordLimitsY = 7 # Y-Axis iter limit
-    limit = 45 # Total iter Limit
+    x = 0  # ; X-Axis
+    y = 0  # ; Y-Axis
+    z = 0  # ; Z-Iterator
+    coordLimitsX = 5  # X-Axis iter limit
+    coordLimitsY = 7  # Y-Axis iter limit
+    limit = 45  # Total iter Limit
     # str
     initials = string
-    returnString = "" # ;Var used to print final result
+    returnString = ""  # ;Var used to print final result
     # lists
-    ascii = [] # ;Mapping
+    ascii = []  # ;Mapping
     # dict
     # code
     if initials.islower():
@@ -46,8 +47,8 @@ def printAsASCII(string, **kwargs):
     for char in initials:
         x = 0
         y = 0
-        z = 0 # ;for automated stuffs (mainly used in the arms of the letter K)
-        s = 0 # ;Same as z
+        z = 0  # ;for automated stuffs (mainly used in the arms of the letter K)
+        s = 0  # ;Same as z
         coordLimitsX = 5  # X-Axis iter limit
 
         # ;ALPHA----------------------------------------------------------------
@@ -104,7 +105,7 @@ def printAsASCII(string, **kwargs):
                         ascii[y].append("L")
                     else:
                         ascii[y].append(" ")
-                elif y == coordLimitsY-1:
+                elif y == coordLimitsY - 1:
                     ascii[y].append("L")
                 addSpace()
                 x += 1
@@ -163,12 +164,12 @@ def printAsASCII(string, **kwargs):
                 if x > coordLimitsX:
                     y += 1
                     x = 0
-                elif y == 0 or y == 3 or y == coordLimitsY-1:
+                elif y == 0 or y == 3 or y == coordLimitsY - 1:
                     if x < coordLimitsX:
                         ascii[y].append("B")
                     else:
                         ascii[y].append(" ")
-                elif 0 <= y < 3 or y < coordLimitsY-1:
+                elif 0 <= y < 3 or y < coordLimitsY - 1:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append("B")
                     else:
@@ -181,12 +182,12 @@ def printAsASCII(string, **kwargs):
                 if x > coordLimitsX:
                     y += 1
                     x = 0
-                elif y == 0 or y == coordLimitsY-1:
+                elif y == 0 or y == coordLimitsY - 1:
                     if x < coordLimitsX:
                         ascii[y].append("D")
                     else:
                         ascii[y].append(" ")
-                elif y != 0 and y < coordLimitsY-1:
+                elif y != 0 and y < coordLimitsY - 1:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append("D")
                     else:
@@ -199,16 +200,16 @@ def printAsASCII(string, **kwargs):
                 if x > coordLimitsX:
                     y += 1
                     x = 0
-                elif y == 0 or y == coordLimitsY-1:
+                elif y == 0 or y == coordLimitsY - 1:
                     ascii[y].append("E")
-                elif 0 < y < 3 or 3 < y < coordLimitsY-1:
+                elif 0 < y < 3 or 3 < y < coordLimitsY - 1:
                     if x == 1:
                         ascii[y].append("E")
                     else:
                         ascii[y].append(" ")
                 elif y == 3:
                     if x < 4:
-                      ascii[y].append("E")
+                        ascii[y].append("E")
                     else:
                         ascii[y].append(" ")
                 addSpace()
@@ -228,7 +229,7 @@ def printAsASCII(string, **kwargs):
                         ascii[y].append(" ")
                 elif y == 3:
                     if x < 4:
-                      ascii[y].append("F")
+                        ascii[y].append("F")
                     else:
                         ascii[y].append(" ")
                 addSpace()
@@ -239,7 +240,7 @@ def printAsASCII(string, **kwargs):
                 if x > coordLimitsX:
                     y += 1
                     x = 0
-                elif y == 0 or 6 <= y <= coordLimitsY-1:
+                elif y == 0 or 6 <= y <= coordLimitsY - 1:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append(" ")
                     elif x > 1:
@@ -251,7 +252,7 @@ def printAsASCII(string, **kwargs):
                         ascii[y].append(" ")
                 elif y == 2:
                     if x == 1:
-                      ascii[y].append("G")
+                        ascii[y].append("G")
                     else:
                         ascii[y].append(" ")
                 elif y == 3:
@@ -279,9 +280,9 @@ def printAsASCII(string, **kwargs):
                 if x > coordLimitsX:
                     y += 1
                     x = 0
-                elif y == 0 or y == coordLimitsY-1:
+                elif y == 0 or y == coordLimitsY - 1:
                     ascii[y].append("I")
-                elif 0 < y < coordLimitsY-1:
+                elif 0 < y < coordLimitsY - 1:
                     if x == 3:
                         ascii[y].append("I")
                     else:
@@ -296,18 +297,18 @@ def printAsASCII(string, **kwargs):
                     x = 0
                 elif y == 0:
                     ascii[y].append("J")
-                elif 0 < y < coordLimitsY-3:
+                elif 0 < y < coordLimitsY - 3:
                     if x == 3:
                         ascii[y].append("J")
                     else:
                         ascii[y].append(" ")
-                elif y == 1 or coordLimitsY-1 > y > 3:
-                    if x == 1 or x == coordLimitsX-2:
+                elif y == 1 or coordLimitsY - 1 > y > 3:
+                    if x == 1 or x == coordLimitsX - 2:
                         ascii[y].append("J")
                     else:
                         ascii[y].append(" ")
-                elif y == coordLimitsY-1:
-                    if x == 2 or x == coordLimitsX-2:
+                elif y == coordLimitsY - 1:
+                    if x == 2 or x == coordLimitsX - 2:
                         ascii[y].append("J")
                     else:
                         ascii[y].append(" ")
@@ -324,12 +325,12 @@ def printAsASCII(string, **kwargs):
                         z -= 1
                     x = 0
                 elif 0 <= y <= 2:
-                    if x == 1 or x == coordLimitsX-z:
+                    if x == 1 or x == coordLimitsX - z:
                         ascii[y].append("K")
                     else:
                         ascii[y].append(" ")
-                elif 2 < y <= coordLimitsY-1:
-                    if x == 1 or x == coordLimitsX-z:
+                elif 2 < y <= coordLimitsY - 1:
+                    if x == 1 or x == coordLimitsX - z:
                         ascii[y].append("K")
                     else:
                         ascii[y].append(" ")
@@ -341,7 +342,7 @@ def printAsASCII(string, **kwargs):
                 if x > coordLimitsX:
                     y += 1
                     x = 0
-                elif y == 0 or 3 < y <= coordLimitsY-1:
+                elif y == 0 or 3 < y <= coordLimitsY - 1:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append("M")
                     else:
@@ -371,8 +372,8 @@ def printAsASCII(string, **kwargs):
                         ascii[y].append("N")
                     else:
                         ascii[y].append(" ")
-                elif 0 < y < coordLimitsY-2:
-                    if x == 1 or x == coordLimitsX-z or x == coordLimitsX:
+                elif 0 < y < coordLimitsY - 2:
+                    if x == 1 or x == coordLimitsX - z or x == coordLimitsX:
                         ascii[y].append("N")
                     else:
                         ascii[y].append(" ")
@@ -384,13 +385,13 @@ def printAsASCII(string, **kwargs):
                 if x > coordLimitsX:
                     y += 1
                     x = 0
-                elif y == 0 or y == coordLimitsY-1:
+                elif y == 0 or y == coordLimitsY - 1:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append(" ")
                     elif x > 0:
                         if not x > 4:
                             ascii[y].append("O")
-                elif 0 < y < coordLimitsY-1:
+                elif 0 < y < coordLimitsY - 1:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append("O")
                     else:
@@ -413,7 +414,7 @@ def printAsASCII(string, **kwargs):
                         ascii[y].append("P")
                     else:
                         ascii[y].append(" ")
-                elif 3 < y <= coordLimitsY-1:
+                elif 3 < y <= coordLimitsY - 1:
                     if x == 1:
                         ascii[y].append("P")
                     else:
@@ -436,19 +437,19 @@ def printAsASCII(string, **kwargs):
                     elif x > 0:
                         if not x > 4:
                             ascii[y].append("Q")
-                elif 0 < y < coordLimitsY-2:
+                elif 0 < y < coordLimitsY - 2:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append("Q")
                     else:
                         ascii[y].append(" ")
                 elif y >= 4:
-                    if y == coordLimitsY-1:
-                        if x == 2 or x == coordLimitsX-z or x == coordLimitsX:
+                    if y == coordLimitsY - 1:
+                        if x == 2 or x == coordLimitsX - z or x == coordLimitsX:
                             ascii[y].append("Q")
                         else:
                             ascii[y].append(" ")
                     else:
-                        if x == 1 or x == coordLimitsX-z:
+                        if x == 1 or x == coordLimitsX - z:
                             ascii[y].append("Q")
                         else:
                             ascii[y].append(" ")
@@ -476,7 +477,7 @@ def printAsASCII(string, **kwargs):
                     else:
                         ascii[y].append(" ")
                 elif y >= 4:
-                    if x == 1 or x == coordLimitsX+z:
+                    if x == 1 or x == coordLimitsX + z:
                         ascii[y].append("R")
                     else:
                         ascii[y].append(" ")
@@ -507,7 +508,7 @@ def printAsASCII(string, **kwargs):
                     x = 0
                 elif y >= coordLimitsY:
                     break
-                elif y < coordLimitsY-1:
+                elif y < coordLimitsY - 1:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append("U")
                     else:
@@ -528,18 +529,18 @@ def printAsASCII(string, **kwargs):
                     y += 1
                     if y > 4:
                         z += 1
-                    if y == coordLimitsY-1:
+                    if y == coordLimitsY - 1:
                         s -= 1
                     x = 0
                 elif y >= coordLimitsY:
                     break
-                elif y < coordLimitsY-2:
+                elif y < coordLimitsY - 2:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append("V")
                     else:
                         ascii[y].append(" ")
                 elif y > 4:
-                    if x == coordLimitsX-z or x == coordLimitsX-s:
+                    if x == coordLimitsX - z or x == coordLimitsX - s:
                         ascii[y].append("V")
                     else:
                         ascii[y].append(" ")
@@ -553,7 +554,7 @@ def printAsASCII(string, **kwargs):
                     x = 0
                 elif y >= coordLimitsY:
                     break
-                elif 0 <= y < 3 or y == coordLimitsY-1:
+                elif 0 <= y < 3 or y == coordLimitsY - 1:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append("W")
                     else:
@@ -588,7 +589,7 @@ def printAsASCII(string, **kwargs):
                     else:
                         ascii[y].append(" ")
                 elif 1 < y < 4 or y < 5:
-                    if x == coordLimitsX-z or x == coordLimitsX-s:
+                    if x == coordLimitsX - z or x == coordLimitsX - s:
                         ascii[y].append("X")
                     else:
                         ascii[y].append(" ")
@@ -607,12 +608,12 @@ def printAsASCII(string, **kwargs):
                 elif y >= coordLimitsY:
                     break
                 elif y >= 2:
-                    if x == coordLimitsX-2:
+                    if x == coordLimitsX - 2:
                         ascii[y].append("Y")
                     else:
                         ascii[y].append(" ")
                 elif y < 2:
-                    if x == coordLimitsX-z or x == coordLimitsX-s:
+                    if x == coordLimitsX - z or x == coordLimitsX - s:
                         ascii[y].append("X")
                     else:
                         ascii[y].append(" ")
@@ -628,10 +629,10 @@ def printAsASCII(string, **kwargs):
                     x = 0
                 elif y >= coordLimitsY:
                     break
-                elif y == 0 or y == coordLimitsY-1:
-                        ascii[y].append("Z")
-                elif 0 < y < coordLimitsY-1:
-                    if x == coordLimitsX-z:
+                elif y == 0 or y == coordLimitsY - 1:
+                    ascii[y].append("Z")
+                elif 0 < y < coordLimitsY - 1:
+                    if x == coordLimitsX - z:
                         ascii[y].append("Z")
                     else:
                         ascii[y].append(" ")
@@ -639,7 +640,7 @@ def printAsASCII(string, **kwargs):
 
         elif char == " ".upper():
             coordLimitsX = amountOfSpacing
-            for char_m in range(limit*amountOfSpacing):
+            for char_m in range(limit * amountOfSpacing):
                 x += 1
                 if x > coordLimitsX:
                     y += 1
@@ -650,7 +651,7 @@ def printAsASCII(string, **kwargs):
                     ascii[y].append(" ")
 
         # ;NUM----------------------------------------------------------------
-        elif char == "0": # ;
+        elif char == "0":  # ;
             for char_0 in range(limit):
                 x += 1
                 if x > coordLimitsX:
@@ -658,14 +659,14 @@ def printAsASCII(string, **kwargs):
                     if y > 1:
                         z += 1
                     x = 0
-                elif y == 0 or y == coordLimitsY-1:
+                elif y == 0 or y == coordLimitsY - 1:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append(" ")
                     elif x > 0:
                         if not x > 4:
                             ascii[y].append("0")
-                elif 0 < y < coordLimitsY-1:
-                    if x == 1 or x == coordLimitsX or x == coordLimitsX-z:
+                elif 0 < y < coordLimitsY - 1:
+                    if x == 1 or x == coordLimitsX or x == coordLimitsX - z:
                         ascii[y].append("0")
                     else:
                         ascii[y].append(" ")
@@ -688,11 +689,11 @@ def printAsASCII(string, **kwargs):
                     else:
                         ascii[y].append(" ")
                 elif 0 <= y <= 4:
-                    if x == 3 or x == coordLimitsX-z and not y == 0:
+                    if x == 3 or x == coordLimitsX - z and not y == 0:
                         ascii[y].append("1")
                     else:
                         ascii[y].append(" ")
-                elif y == coordLimitsY-1:
+                elif y == coordLimitsY - 1:
                     ascii[y].append(char)
                 addSpace()
 
@@ -718,11 +719,11 @@ def printAsASCII(string, **kwargs):
                     else:
                         ascii[y].append(" ")
                 elif y > 1 and y <= 5:
-                    if x == coordLimitsX-z:
+                    if x == coordLimitsX - z:
                         ascii[y].append("2")
                     else:
                         ascii[y].append(" ")
-                elif y == coordLimitsY-1:
+                elif y == coordLimitsY - 1:
                     ascii[y].append("2")
                 addSpace()
 
@@ -738,14 +739,14 @@ def printAsASCII(string, **kwargs):
                     x = 0
                 elif y >= coordLimitsY:
                     break
-                elif y == 0 or y == coordLimitsY-1:
+                elif y == 0 or y == coordLimitsY - 1:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append(" ")
                     elif x > 0:
                         if not x > 4:
                             ascii[y].append("3")
                 elif 0 < y < 3 or 3 < y < coordLimitsY:
-                    if x == coordLimitsX-z:
+                    if x == coordLimitsX - z:
                         ascii[y].append("3")
                     else:
                         ascii[y].append(" ")
@@ -801,10 +802,10 @@ def printAsASCII(string, **kwargs):
                     else:
                         ascii[y].append("5")
                 elif y > 3:
-                    if x == coordLimitsX-z or y == 5 and x == 1:
+                    if x == coordLimitsX - z or y == 5 and x == 1:
                         ascii[y].append("5")
                     else:
-                        if y == coordLimitsY-1:
+                        if y == coordLimitsY - 1:
                             if x == 1 or x == coordLimitsX:
                                 ascii[y].append(" ")
                             else:
@@ -821,7 +822,7 @@ def printAsASCII(string, **kwargs):
                     x = 0
                 elif y >= coordLimitsY:
                     break
-                elif y == 0 or y == coordLimitsY-1:
+                elif y == 0 or y == coordLimitsY - 1:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append(" ")
                     else:
@@ -836,7 +837,7 @@ def printAsASCII(string, **kwargs):
                         ascii[y].append("6")
                     else:
                         ascii[y].append(" ")
-                elif 3 < y < coordLimitsY-1:
+                elif 3 < y < coordLimitsY - 1:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append("6")
                     else:
@@ -860,7 +861,7 @@ def printAsASCII(string, **kwargs):
                 elif y == 0:
                     ascii[y].append("7")
                 elif y >= 0:
-                    if x == coordLimitsX-z:
+                    if x == coordLimitsX - z:
                         ascii[y].append("7")
                     else:
                         ascii[y].append(" ")
@@ -874,12 +875,12 @@ def printAsASCII(string, **kwargs):
                     x = 0
                 elif y >= coordLimitsY:
                     break
-                elif y == 0 or y == 3 or y == coordLimitsY-1:
+                elif y == 0 or y == 3 or y == coordLimitsY - 1:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append(" ")
                     else:
                         ascii[y].append("8")
-                elif 1 <= y < 3 or 3 < y < coordLimitsY-1:
+                elif 1 <= y < 3 or 3 < y < coordLimitsY - 1:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append("8")
                     else:
@@ -894,7 +895,7 @@ def printAsASCII(string, **kwargs):
                     x = 0
                 elif y >= coordLimitsY:
                     break
-                elif y == 0 or y == coordLimitsY-1:
+                elif y == 0 or y == coordLimitsY - 1:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append(" ")
                     else:
@@ -930,7 +931,7 @@ def printAsASCII(string, **kwargs):
                 elif y >= coordLimitsY:
                     break
                 elif 0 <= y <= 1:
-                    if x == coordLimitsX-z:
+                    if x == coordLimitsX - z:
                         ascii[y].append("`")
                     else:
                         ascii[y].append(" ")
@@ -993,7 +994,7 @@ def printAsASCII(string, **kwargs):
                     x = 0
                 elif y >= coordLimitsY:
                     break
-                elif y == 0 or y == coordLimitsY-1:
+                elif y == 0 or y == coordLimitsY - 1:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append(" ")
                     else:
@@ -1003,8 +1004,8 @@ def printAsASCII(string, **kwargs):
                         ascii[y].append("@")
                     else:
                         ascii[y].append(" ")
-                elif 2 <= y < coordLimitsY-1:
-                    if x == 1 or x == coordLimitsX-z:
+                elif 2 <= y < coordLimitsY - 1:
+                    if x == 1 or x == coordLimitsX - z:
                         ascii[y].append("@")
                     elif x == coordLimitsX and 1 <= y <= 3:
                         ascii[y].append("@")
@@ -1037,7 +1038,7 @@ def printAsASCII(string, **kwargs):
                     x = 0
                 elif y >= coordLimitsY:
                     break
-                elif y == 0 or y == coordLimitsY-1:
+                elif y == 0 or y == coordLimitsY - 1:
                     if x == 3:
                         ascii[y].append("$")
                     else:
@@ -1079,18 +1080,18 @@ def printAsASCII(string, **kwargs):
                 elif y >= coordLimitsY:
                     break
                 elif 0 <= y < 2:
-                    if x == 1 or x == coordLimitsX-1:
+                    if x == 1 or x == coordLimitsX - 1:
                         ascii[y].append("%")
                     else:
                         ascii[y].append(" ")
                 elif y >= 2:
                     if y < 5:
-                        if x == coordLimitsX-z:
+                        if x == coordLimitsX - z:
                             ascii[y].append("%")
                         else:
                             ascii[y].append(" ")
                     else:
-                        if x == coordLimitsX-z or x == coordLimitsX:
+                        if x == coordLimitsX - z or x == coordLimitsX:
                             ascii[y].append("%")
                         else:
                             ascii[y].append(" ")
@@ -1115,7 +1116,7 @@ def printAsASCII(string, **kwargs):
                     else:
                         ascii[y].append(" ")
                 elif 0 < y < 3:
-                    if x == coordLimitsX-z or x == coordLimitsX-s:
+                    if x == coordLimitsX - z or x == coordLimitsX - s:
                         ascii[y].append("^")
                     else:
                         ascii[y].append(" ")
@@ -1139,17 +1140,17 @@ def printAsASCII(string, **kwargs):
                     else:
                         ascii[y].append(" ")
                 elif y == 1:
-                    if x == coordLimitsX-z or x == coordLimitsX-s:
+                    if x == coordLimitsX - z or x == coordLimitsX - s:
                         ascii[y].append("&")
                     else:
                         ascii[y].append(" ")
-                elif y == 3 or y == coordLimitsY-1:
+                elif y == 3 or y == coordLimitsY - 1:
                     if 1 < x <= 3 or x == coordLimitsX:
                         ascii[y].append("&")
                     else:
                         ascii[y].append(" ")
-                elif y > 3 or y > coordLimitsY-1:
-                    if x == 1 or x == coordLimitsX-1:
+                elif y > 3 or y > coordLimitsY - 1:
+                    if x == 1 or x == coordLimitsX - 1:
                         ascii[y].append("&")
                     else:
                         ascii[y].append(" ")
@@ -1158,7 +1159,7 @@ def printAsASCII(string, **kwargs):
         elif char == "*":
             z = 4
             s = 0
-            resetIterValues = False # ;Rolls back the values above to defined values
+            resetIterValues = False  # ;Rolls back the values above to defined values
             for char_sc_009 in range(limit):
                 x += 1
                 if x > coordLimitsX:
@@ -1180,17 +1181,17 @@ def printAsASCII(string, **kwargs):
                     x = 0
                 elif y >= coordLimitsY:
                     break
-                elif y == 0 or y == coordLimitsY-1:
+                elif y == 0 or y == coordLimitsY - 1:
                     ascii[y].append(" ")
                 elif 0 < y < 3:
-                    if x == coordLimitsX-z or x == coordLimitsX+s:
+                    if x == coordLimitsX - z or x == coordLimitsX + s:
                         ascii[y].append("*")
                     else:
                         ascii[y].append(" ")
                 elif y == 3:
                     ascii[y].append("*")
                 elif y > 3:
-                    if x == coordLimitsX-z or x == coordLimitsX-s:
+                    if x == coordLimitsX - z or x == coordLimitsX - s:
                         ascii[y].append("*")
                     else:
                         ascii[y].append(" ")
@@ -1210,7 +1211,7 @@ def printAsASCII(string, **kwargs):
                 elif y >= coordLimitsY:
                     break
                 elif y >= 0:
-                    if x == coordLimitsX-z:
+                    if x == coordLimitsX - z:
                         ascii[y].append("(")
                     else:
                         ascii[y].append(" ")
@@ -1230,7 +1231,7 @@ def printAsASCII(string, **kwargs):
                 elif y >= coordLimitsY:
                     break
                 elif y >= 0:
-                    if x == coordLimitsX-z:
+                    if x == coordLimitsX - z:
                         ascii[y].append("(")
                     else:
                         ascii[y].append(" ")
@@ -1260,7 +1261,7 @@ def printAsASCII(string, **kwargs):
                 elif y >= coordLimitsY:
                     break
                 elif y >= 0:
-                    if y == coordLimitsY-1:
+                    if y == coordLimitsY - 1:
                         ascii[y].append("_")
                     else:
                         ascii[y].append(" ")
@@ -1290,7 +1291,7 @@ def printAsASCII(string, **kwargs):
                     break
                 elif 0 <= y <= 1 or y > 4:
                     ascii[y].append(" ")
-                elif 1 < y < coordLimitsY-1:
+                elif 1 < y < coordLimitsY - 1:
                     if 0 < y <= 2 or y == 4:
                         if x == 3:
                             ascii[y].append("+")
@@ -1311,12 +1312,12 @@ def printAsASCII(string, **kwargs):
                     x = 0
                 elif y >= coordLimitsY:
                     break
-                elif y == 0 or y == coordLimitsY-1:
+                elif y == 0 or y == coordLimitsY - 1:
                     if 1 <= x <= 3:
                         ascii[y].append("[")
                     else:
                         ascii[y].append(" ")
-                elif 0 < y < coordLimitsY-1:
+                elif 0 < y < coordLimitsY - 1:
                     if x == 1:
                         ascii[y].append("[")
                 addSpace()
@@ -1329,12 +1330,12 @@ def printAsASCII(string, **kwargs):
                     x = 0
                 elif y >= coordLimitsY:
                     break
-                elif y == 0 or y == coordLimitsY-1:
+                elif y == 0 or y == coordLimitsY - 1:
                     if 3 <= x < coordLimitsX:
                         ascii[y].append("{")
                     else:
                         ascii[y].append(" ")
-                elif 0 < y < 3 or 3 < y < coordLimitsY-1:
+                elif 0 < y < 3 or 3 < y < coordLimitsY - 1:
                     if x == 2:
                         ascii[y].append("{")
                     else:
@@ -1354,12 +1355,12 @@ def printAsASCII(string, **kwargs):
                     x = 0
                 elif y >= coordLimitsY:
                     break
-                elif y == 0 or y == coordLimitsY-1:
+                elif y == 0 or y == coordLimitsY - 1:
                     if 3 <= x <= coordLimitsX:
                         ascii[y].append("[")
                     else:
                         ascii[y].append(" ")
-                elif 0 < y < coordLimitsY-1:
+                elif 0 < y < coordLimitsY - 1:
                     if x == coordLimitsX:
                         ascii[y].append("[")
                     else:
@@ -1374,13 +1375,13 @@ def printAsASCII(string, **kwargs):
                     x = 0
                 elif y >= coordLimitsY:
                     break
-                elif y == 0 or y == coordLimitsY-1:
-                    if 2 <= x < coordLimitsX-1:
+                elif y == 0 or y == coordLimitsY - 1:
+                    if 2 <= x < coordLimitsX - 1:
                         ascii[y].append("}")
                     else:
                         ascii[y].append(" ")
-                elif 0 < y < 3 or 3 < y < coordLimitsY-1:
-                    if x == coordLimitsX-1:
+                elif 0 < y < 3 or 3 < y < coordLimitsY - 1:
+                    if x == coordLimitsX - 1:
                         ascii[y].append("}")
                     else:
                         ascii[y].append(" ")
@@ -1405,7 +1406,7 @@ def printAsASCII(string, **kwargs):
                 elif y < 2:
                     ascii[y].append(" ")
                 elif y >= 2:
-                    if x == coordLimitsX-z:
+                    if x == coordLimitsX - z:
                         ascii[y].append("\/"[0])
                     else:
                         ascii[y].append(" ")
@@ -1437,7 +1438,7 @@ def printAsASCII(string, **kwargs):
                     x = 0
                 elif y >= coordLimitsY:
                     break
-                elif y == 0 or y == 3 or y == coordLimitsY-1:
+                elif y == 0 or y == 3 or y == coordLimitsY - 1:
                     ascii[y].append(" ")
                 elif 1 <= y < 3:
                     if x == 3:
@@ -1445,7 +1446,7 @@ def printAsASCII(string, **kwargs):
                     else:
                         ascii[y].append(" ")
                 elif 3 < y <= 6:
-                    if x == coordLimitsX-z:
+                    if x == coordLimitsX - z:
                         ascii[y].append(";")
                     else:
                         ascii[y].append(" ")
@@ -1459,7 +1460,7 @@ def printAsASCII(string, **kwargs):
                     x = 0
                 elif y >= coordLimitsY:
                     break
-                elif y == 0 or y == 3 or y == coordLimitsY-1:
+                elif y == 0 or y == 3 or y == coordLimitsY - 1:
                     ascii[y].append(" ")
                 elif 1 <= y < 3:
                     if x == 3:
@@ -1515,7 +1516,7 @@ def printAsASCII(string, **kwargs):
                     break
                 elif 0 <= y <= 5:
                     ascii[y].append(" ")
-                elif y == coordLimitsY-1:
+                elif y == coordLimitsY - 1:
                     if x == 1:
                         ascii[y].append(",")
                     else:
@@ -1536,12 +1537,12 @@ def printAsASCII(string, **kwargs):
                 elif y >= coordLimitsY:
                     break
                 elif 0 <= y < 4:
-                    if x == coordLimitsX-z:
+                    if x == coordLimitsX - z:
                         ascii[y].append("<")
                     else:
                         ascii[y].append(" ")
                 elif 3 < y <= 6:
-                    if x == coordLimitsX-s:
+                    if x == coordLimitsX - s:
                         ascii[y].append("<")
                     else:
                         ascii[y].append(" ")
@@ -1578,12 +1579,12 @@ def printAsASCII(string, **kwargs):
                 elif y >= coordLimitsY:
                     break
                 elif 0 <= y < 4:
-                    if x == coordLimitsX-z:
+                    if x == coordLimitsX - z:
                         ascii[y].append(">")
                     else:
                         ascii[y].append(" ")
                 elif 3 < y <= 6:
-                    if x == coordLimitsX-s:
+                    if x == coordLimitsX - s:
                         ascii[y].append(">")
                     else:
                         ascii[y].append(" ")
@@ -1602,7 +1603,7 @@ def printAsASCII(string, **kwargs):
                 elif y < 2:
                     ascii[y].append(" ")
                 elif y >= 2:
-                    if x == coordLimitsX-z:
+                    if x == coordLimitsX - z:
                         ascii[y].append("/")
                     else:
                         ascii[y].append(" ")
@@ -1631,5 +1632,6 @@ def printAsASCII(string, **kwargs):
             p("Length has been reached")
 
     p(returnString)
+
 
 printAsASCII(f"hello, {gp.getuser()}!", spacing=4)
