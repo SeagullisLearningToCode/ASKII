@@ -2,7 +2,7 @@
  __                     ___  __              ___       __   __
 / _` |  | |    |       |__  |__)  /\   |\/| |__  |  | /  \ |__) |__/
 \__> \__/ |___ |___    |    |  \ /~~\  |  | |___ |/\| \__/ |  \ |  \
-                                                    Version: 1.015 (Without Pygame and Pyglet)
+                                                    Version: 1.015a (Without Pygame and Pyglet)
 
 This file stores very simple functions with the sole purpose of de-bloating the Main.py file (used to be)
 This file is also makes stating certain things faster and possibly easier.
@@ -16,6 +16,7 @@ from random import *
 from configparser import *
 import gc
 from importlib import util
+import pdb
 
 # ;VARIABLES-------------------------------------------------------------------------------------------------------------------
 # ;Today's Date
@@ -62,19 +63,27 @@ def flp(l: dict, **kwargs):
     """
     # kwargs
     additons = kwargs.get("add", None)
+    # lists
+    additonsCommandStr = ["<addfirst>"]
     # abs
     add = additons
     # code
     if type(l) is dict:
         for key in l:
             if add is not None:
-                p(f"{key}: {l.get(key)} {add}")
+                if add.__contains__(additonsCommandStr[0]):
+                    p(f"{add[len(additonsCommandStr[0]):]} {key}: {l.get(key)}")
+                else:
+                    p(f"{key}: {l.get(key)} {add}")
             else:
                 p(f"{key}: {l.get(key)}")
     elif type(l) is list:
         for value in l:
             if add is not None:
-                p(f"{value} {add}")
+                if add.__contains__(additonsCommandStr[0]):
+                    p(f"{add[len(additonsCommandStr[0]):]} {value}")
+                else:
+                    p(f"{value} {add}")
             else:
                 p(value)
 
@@ -95,40 +104,6 @@ def GetPresSpec(file: str, **kwargs):
         p(getpres(file))
 
     return getpres(file)
-
-# ;Raise Custom Error Function (RCEF)
-
-def RCE(rfe: str, et: int):
-    """
-    This function can raise a custom error which it's easier to use
-
-    Refrences
-    ----------
-    rfe: String
-    et: which error do you want to raise
-        Values:
-                0 = File Not Found Error (ERROR)
-                1 = File Exists Error (ERROR
-                2 = Not an Error but a Warning (WARNING)
-                3 = EccoPY_RenderTypeInvaild_Error (ERROR)
-    """
-    # INT
-    error_type = et
-    # CODE
-    if error_type == 0:  # ;FNFE
-        p(f"ERROR: {rfe}")
-        raise FileNotFoundError
-    elif error_type == 1:  # ;FEE
-        p(f"ERROR: {rfe}")
-        raise FileExistsError
-    elif error_type == 2:  # ;NEBW
-        p(f"WARNING: {rfe}")
-    elif error_type == 3:  # ;EP_RTI_E
-        p(f"ERROR: {rfe}")
-        raise ValueError
-    else:
-        p("Can't go higher than 1 at the moment...\n Sorry About that :(")
-        raise ValueError
 
 
 def hexValFromFile(dirname: str,
