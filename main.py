@@ -8,34 +8,29 @@ A   A S   S K  K    I     I
 A   A  SSS  K   K IIIII IIIII
             By: SeagullisLearningToCode
 """
-
 from data.frw.GF import *
-
 
 def printAsASCII(string, **kwargs):
     # kwargs
-    printASCIIList = kwargs.get("printASCIIList", False)  # Prints after ascii art is rendered with the width and height
-    checkIfYValueReachedASCIIList = kwargs.get("check", False)  # Checks if the y value has reached the length of the Ascii list
-    getLength = kwargs.get("getlength", False)  # Gets the length of ASCII
-    amountOfSpacing = kwargs.get("spacing", 2)  # ; adds additional spacing when input contains " "
+    printASCIIList = kwargs.get("printASCIIList", False)  # ;Prints after ascii art is rendered with the width and height
+    checkIfYValueReachedASCIIList = kwargs.get("check", False)  # ;Checks if the y value has reached the length of the Ascii list
+    getLength = kwargs.get("getlength", False)  # ;Gets the length of ASCII
+    amountOfSpacing = kwargs.get("spacing", 2)  # ;adds additional spacing when input contains " "
+    reduceSpacing = kwargs.get("reduceSpacing", True)  # ;Gets rid of any unnecessary spacing for special characters, by default this is set to true
     # int
     x = 0  # ; X-Axis
     y = 0  # ; Y-Axis
-    z = 0  # ; Z-Iterator
-    coordLimitsX = 5  # X-Axis iter limit
-    coordLimitsY = 7  # Y-Axis iter limit
-    limit = 45  # Total iter Limit
+    coordLimitsX = 5  # ;X-Axis iter limit
+    coordLimitsY = 7  # ;Y-Axis iter limit
+    limit = 45  # ;Total iter Limit
     # str
-    initials = string
     returnString = ""  # ;Var used to print final result
     # lists
     ascii = []  # ;Mapping
-    # dict
     # code
-    if initials.islower():
-        initials = initials.upper()
     for asciiList in range(coordLimitsY):  # ;Make nested list
         ascii.append([])
+
     if getLength is True:
         p(len(ascii))
 
@@ -44,12 +39,74 @@ def printAsASCII(string, **kwargs):
             if not y >= coordLimitsY:
                 ascii[y].append(" ")
 
-    for char in initials:
+    def reduceSpacingVar(varname, operation, number, **kwargs):
+        """
+        Requires 'reduceSpacing` kwarg to be set to true (which is enabled by default)
+
+        :param varname:
+        :param number:
+        :param kwargs:
+        :return:
+        """
+        # kwargs
+        test = kwargs.get("test", False) # ;This is a test arg which will print after the varible has been changed only if the `reduceSpacing` kwarg has been set to 'True'
+        printResult = kwargs.get("printResult", False) # ;This a arg that will print the var's value before and after
+        printDebugDispAllVars = kwargs.get("debugVars", "N") # ;Prints all vars and globals
+        # lists
+        passArgStrings = ["None", "N", "n", "none", "n/a", "N/A", "nop", "no-operation", "NOP", "No-Operation", "pass", "passed", "Pass", "Passed", "p"]
+        execArgStrings = ["a", "A", "noflp", 'All', "all", 'vars', "v", "g", "globals", "global"]
+        # code
+        if printDebugDispAllVars in passArgStrings:
+            pass
+        elif printDebugDispAllVars in execArgStrings:
+            if printDebugDispAllVars in execArgStrings[0:1]:
+                p(f"Executed Function Debug Mode at <{tt}>: \n allVars\n ---------------------------------------------------------")
+                flp(vars(), add="<addfirst>  ")
+                p(f" ---------------------------------------------------------\n<{tt}> Excuting allGlobals as {flp}...\n allGlobals\n ---------------------------------------------------------\n")
+                flp(globals(), add="<addfirst>  ")
+                p(f"\n<{tt}> Function Debug Mode Finished doing a full scan for...\n {vars} \n {globals}\n")
+        if reduceSpacing is True: # ;Check if bool value is True, if not then pass
+            if type(varname) == str: # ;Check if the 'varname' arg is a string and nothing else, if so returns custom error
+                if printResult is True:
+                    exec(f"p(f'<%s> Before: {exec('varname')}' % tt)")
+                if operation in passArgStrings:
+                    run = f"{varname} = {number}"
+                else:
+                    run = f"{varname} {operation}= {number}"
+                if test is True:
+                    exec(run)
+                    if operation not in passArgStrings: # ;If 'operation' arg is detected to be one or more of matching list of strings in 'passArgStrings' then it will skip this part to the `else' statement
+                        if operation == "+":
+                            p(f"<{tt}> {varname} has been added by {number}")
+                        elif operation == "-":
+                            p(f"<{tt}> {varname} has been subtracted by {number}")
+                        elif operation == "*":
+                            p(f"<{tt}> {varname} has been multiplied by {number}")
+                        elif operation == "/":
+                            p(f"<{tt}> {varname} has been divided by {number}")
+                    else:
+                        p(f"<{tt}> {varname} has been set to {number}")
+                exec(run)
+                if printResult is True:
+                    exec(f"p(f'<%s> Result: {exec(f'varname')}' % tt)")
+            else:
+                p(f"\nPlease use the varname's type as a string, python and gully will find the var's value and set it as so\n\n Error Details\n -------------------------------------\n  Date: {tt} \n  Type: {type(varname)}\n  Value: {varname}")
+                sys.exit(2)
+
+    for char in string: # ;Loop through each character in 'string'
+        # ;After it checks which character it is the values that have been added will reset to zero,
+        # ;or in simplier terms these shouldn't be changed
+        # ; |
+        # ;\/
         x = 0
         y = 0
-        z = 0  # ;for automated stuffs (mainly used in the arms of the letter K)
-        s = 0  # ;Same as z
-        coordLimitsX = 5  # X-Axis iter limit
+        z = 0 # ;for automated stuffs (mainly used in the arms of the letter K)
+        s = 0 # ;Same as z
+        if reduceSpacing is True:
+            coordLimitsX = 5 # X-Axis iter limit
+
+        if char.islower(): # ;Check if the character in initials is a lower character if so that lowercase character becomes an uppercase character
+            char = char.upper()
 
         # ;ALPHA----------------------------------------------------------------
         if char == "s".upper():
@@ -471,7 +528,7 @@ def printAsASCII(string, **kwargs):
                         ascii[y].append("R")
                     else:
                         ascii[y].append(" ")
-                elif y > 0 and y < 4:
+                elif 0 < y < 4:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append("R")
                     else:
@@ -718,7 +775,7 @@ def printAsASCII(string, **kwargs):
                         ascii[y].append("2")
                     else:
                         ascii[y].append(" ")
-                elif y > 1 and y <= 5:
+                elif 1 < y <= 5:
                     if x == coordLimitsX - z:
                         ascii[y].append("2")
                     else:
@@ -765,7 +822,7 @@ def printAsASCII(string, **kwargs):
                     x = 0
                 elif y >= coordLimitsY:
                     break
-                elif y >= 0 and y < 3:
+                elif 0 <= y < 3:
                     if x == 1 or x == coordLimitsX:
                         ascii[y].append("4")
                     else:
@@ -921,6 +978,9 @@ def printAsASCII(string, **kwargs):
         # ;May not be accurate due to 5x7 limit
         elif char == "`":
             z = 4
+            #reduceSpacingVar('z', '-', 2)
+            reduceSpacingVar("coordLimitsX", 'p', 3, printResult=True, test=True, debugVars="a")
+            p(coordLimitsX)
             for char_sc_000 in range(limit):
                 x += 1
                 if x > coordLimitsX:
@@ -947,7 +1007,7 @@ def printAsASCII(string, **kwargs):
                     x = 0
                 elif y >= coordLimitsY:
                     break
-                elif y >= 0 and y < 3 or y > 4:
+                elif 0 <= y < 3 or y > 4:
                     ascii[y].append(" ")
                 elif y == 3:
                     if x == 2 or x == 3 or x == 5:
@@ -1495,7 +1555,7 @@ def printAsASCII(string, **kwargs):
                 x += 1
                 if x > coordLimitsX:
                     y += 1
-                    x0 = 0
+                    x = 0
                 elif y >= coordLimitsY:
                     break
                 elif y < 2:
@@ -1634,4 +1694,4 @@ def printAsASCII(string, **kwargs):
     p(returnString)
 
 
-printAsASCII(f"hello, {gp.getuser()}!", spacing=4)
+printAsASCII("`", spacing=4, printASCIIList=True)
