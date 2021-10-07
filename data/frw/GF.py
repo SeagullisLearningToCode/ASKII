@@ -148,7 +148,8 @@ def hexValFromFile(dirname: str,
             if os.path.exists(dtn) is False:  # ;if directory doesn't exist then create it
                 os.makedirs(dtn)
     if os.path.exists(gdn) is False:
-        RCE(f"The file specified cannot be found \n {gdn}", 0)
+        #RCE(f"The file specified cannot be found \n {gdn}", 0)
+        sys.exit(2)
     else:
         for i in r:
             preres.append(i)
