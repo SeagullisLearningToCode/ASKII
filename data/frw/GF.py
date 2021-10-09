@@ -2,7 +2,7 @@
  __                     ___  __              ___       __   __
 / _` |  | |    |       |__  |__)  /\   |\/| |__  |  | /  \ |__) |__/
 \__> \__/ |___ |___    |    |  \ /~~\  |  | |___ |/\| \__/ |  \ |  \
-                                                    Version: 1.015a (Without Pygame and Pyglet)
+                                                    Version: 1.015b (Without Pygame and Pyglet)
 
 This file stores very simple functions with the sole purpose of de-bloating the Main.py file (used to be)
 This file is also makes stating certain things faster and possibly easier.
@@ -31,8 +31,6 @@ GF_XTN_FOLDER_PATH = f"{GF_FILE_PATH}/EXT/"
 
 # ;FUNCTIONS-------------------------------------------------------------------------------------------------------------------
 
-# ;p function
-# ;reason: same as the p function but made it faster to make a print statement by using a few characters
 def p(t="passed", **kwargs):
     """
     Print
@@ -44,8 +42,6 @@ def p(t="passed", **kwargs):
     # CODE
     print(t)
 
-# ;sps function
-# ;Reason: easier and shorter
 def sps(t: str):
     """
     Same thing as p() but adds in "passed"
@@ -64,28 +60,76 @@ def flp(l: dict, **kwargs):
     # kwargs
     additons = kwargs.get("add", None)
     # lists
-    additonsCommandStr = ["<addfirst>"]
+    additonsCommander = ["<addfirst>", "<addinbetween>", "<counter>"]
     # abs
     add = additons
     # code
+    if add is not None and type(add) is str:
+        if add.__contains__(additonsCommander[2]):
+            additionsCommanderCounter = 0
+
     if type(l) is dict:
         for key in l:
-            if add is not None:
-                if add.__contains__(additonsCommandStr[0]):
-                    p(f"{add[len(additonsCommandStr[0]):]} {key}: {l.get(key)}")
+            if add is not None and type(add) is str:
+                if add.__contains__(additonsCommander[0]):
+                    p(f"{add[len(additonsCommander[0]):]} {key}: {l.get(key)}")
+                elif add.__contains__(additonsCommander[1]):
+                    p(f"{key}: {add[len(additonsCommander[1]):]} {l.get(key)}")
+                elif add.__contains__(additonsCommander[2]):
+                    additionsCommanderCounter += 1
+                    p(f"{key}: {l.get(key)} <{additonsCommander}>")
                 else:
                     p(f"{key}: {l.get(key)} {add}")
             else:
                 p(f"{key}: {l.get(key)}")
     elif type(l) is list:
         for value in l:
-            if add is not None:
-                if add.__contains__(additonsCommandStr[0]):
-                    p(f"{add[len(additonsCommandStr[0]):]} {value}")
+            if add is not None and type(add) is str:
+                if add.__contains__(additonsCommander[0]):
+                    p(f"{add[len(additonsCommander[0]):]} {value}")
                 else:
                     p(f"{value} {add}")
             else:
                 p(value)
+
+def getAllVars(**kwargs):
+    """
+    code inheirited and modified from the ASKII project
+
+    :param kwargs:
+    :return:
+    """
+    # kwargs
+    test = kwargs.get("test", False)  # ;This is a test arg which will print after the varible has been changed only if the `reduceSpacing` kwarg has been set to 'True'
+    printResult = kwargs.get("printResult", False)  # ;This a arg that will print the var's value before and after
+    printDebugDispAllVars = kwargs.get("debugVars", "N")  # ;Prints all vars and globals
+    # lists
+    passArgStrings = ["NOP", "nop"]
+    execArgStrings = ["all", "globals", "vars"]
+    # dicts
+    easSTDOUTDict = {
+        "all": [f"GF All Vars:\n\tallVars\n\t---------------------------------------------------------", f" ---------------------------------------------------------\n<{tt}> Excuting allGlobals as {flp}...\n\tallGlobals\n\t---------------------------------------------------------", f"\nBelow this point is non debug executions\n================================================\n"],
+        "vars": [f"GF All Vars:\n\tallVars\n\t---------------------------------------------------------", f"\nBelow this point is non debug executions\n================================================\n"],
+        "globals": [f"GF All Vars:\n\tallGlobals\n\t---------------------------------------------------------", f"\nBelow this point is non debug executions\n================================================\n"]
+    }
+    # code
+    if printDebugDispAllVars in passArgStrings:
+        pass
+    elif printDebugDispAllVars in execArgStrings:
+        if printDebugDispAllVars in execArgStrings[0:1]:
+            p(easSTDOUTDict["all"][0])
+            flp(vars(), add="<addfirst>\t")
+            p(easSTDOUTDict["all"][1])
+            flp(globals(), add="<addfirst>\t")
+            p(easSTDOUTDict["all"][2])
+        elif printDebugDispAllVars in execArgStrings[1:2]:
+            p(easSTDOUTDict["globals"][0])
+            flp(globals(), add="<addfirst>\t")
+            p(easSTDOUTDict["globals"][1])
+        elif printDebugDispAllVars in execArgStrings[2]:
+            p(easSTDOUTDict['vars'][0])
+            flp(vars(), add='<addfirst>\t')
+            p(easSTDOUTDict['vars'][1])
 
 # ;Get Presence
 # ;reason: shorten it up a bit with the os.path.exists
