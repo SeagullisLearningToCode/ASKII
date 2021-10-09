@@ -1671,4 +1671,4 @@ class askii(object):
         p(returnString)
 
 
-askii("+", printASCIIList=True)
+askii("Hello, World! /--_", printASCIIList=True)
